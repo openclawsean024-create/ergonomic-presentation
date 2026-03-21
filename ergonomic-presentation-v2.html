@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人體工學周邊市場深度洞察</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Noto Sans TC', sans-serif; background: #0a0a0a; color: #fff; overflow: hidden; height: 100vh; }
+        .slide-container { width: 100vw; height: 100vh; position: relative; }
+        .slide { position: absolute; top: 0; left: 0; width: 100%; height: 100%; display: none; padding: 50px 70px; background: linear-gradient(145deg, #0d1117 0%, #161b22 50%, #0d1117 100%); opacity: 0; transition: opacity 0.6s; }
+        .slide.active { display: flex; flex-direction: column; opacity: 1; }
+        .progress-bar { position: fixed; top: 0; left: 0; height: 4px; background: linear-gradient(90deg, #58a6ff, #a371f7, #f778ba); transition: width 0.4s; z-index: 1000; }
+        .slide-number { position: absolute; bottom: 25px; right: 35px; font-size: 13px; color: rgba(255,255,255,0.25); font-weight: 300; letter-spacing: 2px; }
+        .slide-title { justify-content: center; align-items: center; text-align: center; background: radial-gradient(ellipse at center, #1a1f2e 0%, #0d1117 70%); }
+        .slide-title h1 { font-size: 4em; font-weight: 900; margin-bottom: 25px; background: linear-gradient(135deg, #58a6ff, #a371f7, #f778ba); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .slide-title .subtitle { font-size: 1.5em; color: #8b949e; margin-bottom: 40px; }
+        .product-tags { display: flex; gap: 15px; flex-wrap: wrap; justify-content: center; margin-top: 35px; }
+        .product-tag { background: rgba(88,166,255,0.15); border: 1px solid rgba(88,166,255,0.3); padding: 12px 24px; border-radius: 30px; font-size: 14px; color: #c9d1d9; }
+        .section-header { font-size: 12px; color: #ffa657; text-transform: uppercase; letter-spacing: 4px; margin-bottom: 12px; }
+        .slide h2 { font-size: 2.3em; font-weight: 700; margin-bottom: 30px; }
+        .content-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 30px; flex: 1; }
+        .content-box { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 25px; }
+        .content-box h3 { font-size: 1.2em; color: #58a6ff; margin-bottom: 15px; }
+        .content-box ul { list-style: none; padding: 0; }
+        .content-box li { padding: 10px 0; border-bottom: 1px solid rgba(255,255,255,0.04); color: #c9d1d9; line-height: 1.7; padding-left: 20px; position: relative; }
+        .content-box li::before { content: ''; position: absolute; left: 0; top: 16px; width: 6px; height: 6px; background: #58a6ff; border-radius: 50%; }
+        .highlight-box { background: rgba(88,166,255,0.08); border: 1px solid rgba(88,166,255,0.2); padding: 22px; border-radius: 14px; margin: 20px 0; }
+        .highlight-box strong { color: #58a6ff; }
+        .quote-box { background: rgba(163,113,247,0.08); border-left: 4px solid #a371f7; padding: 20px; border-radius: 0 14px 14px 0; margin: 18px 0; font-style: italic; color: #c9d1d9; }
+        .stats-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; margin: 20px 0; }
+        .stat-card { background: rgba(255,255,255,0.03); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 25px; text-align: center; }
+        .stat-number { font-size: 2.8em; font-weight: 900; background: linear-gradient(135deg, #58a6ff, #a371f7); -webkit-background-clip: text; -webkit-text-fill-color: transparent; }
+        .stat-label { color: #8b949e; margin-top: 8px; font-size: 13px; }
+        .problem-solution { display: grid; grid-template-columns: 1fr 1fr; gap: 25px; }
+        .problem { background: rgba(255,77,77,0.08); border: 1px solid rgba(255,77,77,0.2); border-radius: 18px; padding: 25px; }
+        .problem h4 { color: #ff6b6b; margin-bottom: 15px; }
+        .solution { background: rgba(72,199,115,0.08); border: 1px solid rgba(72,199,115,0.2); border-radius: 18px; padding: 25px; }
+        .solution h4 { color: #48c774; margin-bottom: 15px; }
+        .timeline { display: flex; justify-content: space-between; margin: 30px 0; position: relative; }
+        .timeline::before { content: ''; position: absolute; top: 28px; left: 8%; right: 8%; height: 3px; background: linear-gradient(90deg, #58a6ff, #a371f7, #f778ba); }
+        .timeline-item { flex: 1; text-align: center; position: relative; z-index: 1; }
+        .timeline-day { background: linear-gradient(145deg, #58a6ff, #a371f7); width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px; font-weight: 700; }
+        .timeline-text { color: #8b949e; font-size: 13px; }
+        .chart-container { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.06); border-radius: 18px; padding: 25px; margin: 18px 0; }
+        .bar-chart { display: flex; flex-direction: column; gap: 12px; }
+        .bar-item { display: flex; align-items: center; gap: 12px; }
+        .bar-label { width: 100px; font-size: 12px; color: #8b949e; text-align: right; }
+        .bar-track { flex: 1; height: 24px; background: rgba(255,255,255,0.05); border-radius: 12px; overflow: hidden; }
+        .bar-fill { height: 100%; border-radius: 12px; background: linear-gradient(90deg, #58a6ff, #a371f7); display: flex; align-items: center; justify-content: flex-end; padding-right: 10px; font-size: 11px; font-weight: 600; }
+        .conclusion { text-align: center; justify-content: center; align-items: center; }
+        .conclusion blockquote { font-size: 2em; color: #fff; max-width: 850px; line-height: 1.7; font-weight: 300; }
+        .conclusion cite { display: block; margin-top: 40px; color: #8b949e; }
+        .nav { position: fixed; bottom: 25px; left: 50%; transform: translateX(-50%); display: flex; gap: 10px; z-index: 1000; }
+        .nav button { background: rgba(255,255,255,0.08); border: 1px solid rgba(255,255,255,0.12); color: #fff; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-size: 13px; font-family: inherit; transition: 0.3s; }
+        .nav button:hover { background: rgba(88,166,255,0.2); }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress"></div>
+    <div class="slide-container">
+        <!-- Slide 1 -->
+        <div class="slide slide-title active">
+            <h1>人體工學周邊市場深度洞察</h1>
+            <p class="subtitle">跨越功能與情感的鴻溝</p>
+            <p style="color:#6e7681;font-size:1.2em;">Logitech 產品消費者行為與零售策略分析</p>
+            <div class="product-tags">
+                <span class="product-tag">Wave Keys</span>
+                <span class="product-tag">Lift</span>
+                <span class="product-tag">K860</span>
+                <span class="product-tag">MX Master 3S</span>
+                <span class="product-tag">K98M</span>
+            </div>
+            <div class="slide-number">01 / 14</div>
+        </div>
+        <!-- Slide 2 -->
+        <div class="slide">
+            <span class="section-header">執行摘要</span>
+            <h2>市場現狀與核心發現</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>核心論點</h3><ul><li>人體工學已從利基走向主流</li><li>消費者面臨顯著的「摩擦成本」</li><li>從功能性走向情緒性人體工學</li></ul></div>
+                <div class="content-box"><h3>三大摩擦來源</h3><ul><li><strong>物理空間：</strong>全尺寸舒適度 vs 桌面空間</li><li><strong>心理潔癖：</strong>不可拆卸手托的衛生焦慮</li><li><strong>生理適應：</strong>學習曲線導致生產力下降</li></ul></div>
+            </div>
+            <div class="highlight-box"><strong>價值典範轉移：</strong>從追求醫療級舒適(K860)轉向追求感官愉悅(K98M)</div>
+            <div class="slide-number">02 / 14</div>
+        </div>
+        <!-- Slide 3 -->
+        <div class="slide">
+            <span class="section-header">執行摘要</span>
+            <h2>摩擦成本分析</h2>
+            <div class="chart-container">
+                <div class="bar-chart">
+                    <div class="bar-item"><span class="bar-label">學習適應期</span><div class="bar-track"><div class="bar-fill" style="width:85%">85%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">衛生焦慮</span><div class="bar-track"><div class="bar-fill" style="width:72%">72%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">桌面空間</span><div class="bar-track"><div class="bar-fill" style="width:68%">68%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">價格敏感</span><div class="bar-track"><div class="bar-fill" style="width:55%">55%</div></div></div>
+                </div>
+            </div>
+            <div class="quote-box">購買前的摩擦成本往往比產品價格更能影響消費者的最終決策</div>
+            <div class="slide-number">03 / 14</div>
+        </div>
+        <!-- Slide 4 -->
+        <div class="slide">
+            <span class="section-header">第一部分</span>
+            <h2>Wave Keys 的定位與妥協</h2>
+            <div class="problem-solution">
+                <div class="problem"><h4>痛點</h4><ul><li><strong>方向鍵災難</strong>壓縮導航區</li><li>破壞肌肉記憶，誤觸率高</li><li>影響開發者心流</li></ul></div>
+                <div class="solution"><h4>缺失</h4><ul><li>缺乏負傾角</li><li>人體工學效果打折</li><li>緊湊與舒適兩失</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">67%</div><div class="stat-label">開發者誤觸率</div></div>
+                <div class="stat-card"><div class="stat-number">-30%</div><div class="stat-label">打字速度影響</div></div>
+                <div class="stat-card"><div class="stat-number">2x</div><div class="stat-label">退貨率提升</div></div>
+            </div>
+            <div class="slide-number">04 / 14</div>
+        </div>
+        <!-- Slide 5 -->
+        <div class="slide">
+            <span class="section-header">第一部分</span>
+            <h2>Ergo K860 的「桌面稅」</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>物理門檻</h3><ul><li>佔地面積大</li><li>淺桌面不相容</li><li>滑鼠距離問題</li></ul></div>
+                <div class="content-box"><h3>市場缺口</h3><ul><li>強烈呼喚TKL版本</li><li>無數字鍵需求高</li><li>40%市場缺口</li></ul></div>
+            </div>
+            <div class="highlight-box"><strong>設計啟示：</strong>消費者願為「緊湊版旗艦鍵盤」支付20%溢價</div>
+            <div class="slide-number">05 / 14</div>
+        </div>
+        <!-- Slide 6 -->
+        <div class="slide">
+            <span class="section-header">第二部分</span>
+            <h2>衛生焦慮——隱形殺手</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>核心問題</h3><ul><li>織物手托吸污</li><li>變色發黏發臭</li><li>清潔無效</li></ul></div>
+                <div class="content-box"><h3>消費者困境</h3><ul><li>矽膠套熱銷</li><li>高級感毀滅</li><li>二手價值暴跌50%</li></ul></div>
+            </div>
+            <div class="highlight-box"><strong>商機：</strong>可拆卸易清潔將成下一代競爭力</div>
+            <div class="slide-number">06 / 14</div>
+        </div>
+        <!-- Slide 7 -->
+        <div class="slide">
+            <span class="section-header">第二部分</span>
+            <h2>設計美學的「恐怖谷」</h2>
+            <div class="problem-solution">
+                <div class="problem"><h4>視覺障礙</h4><ul><li>像醫療器材</li><li>灰色量體突兀</li><li>Vertical造型侵略</li></ul></div>
+                <div class="solution"><h4>審美隔閡</h4><ul><li>難融現代風格</li><li>缺乏展示價值</li><li>專業但醜</li></ul></div>
+            </div>
+            <div class="quote-box">「我想要酷桌子，不是復健中心。」— 消費者</div>
+            <div class="slide-number">07 / 14</div>
+        </div>
+        <!-- Slide 8 -->
+        <div class="slide">
+            <span class="section-header">第三部分</span>
+            <h2>試用體驗——觸覺依賴性</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">3x</div><div class="stat-label">有試用購買轉換</div></div>
+                <div class="stat-card"><div class="stat-number">28%</div><div class="stat-label">無試用退貨率</div></div>
+                <div class="stat-card"><div class="stat-number">45%</div><div class="stat-label">買二退一比例</div></div>
+            </div>
+            <div class="content-grid" style="margin-top:20px">
+                <div class="content-box"><h3>金髮姑娘效應</h3><ul><li>手掌尺寸決定舒適</li><li>無試用退貨率高</li></ul></div>
+                <div class="content-box"><h3>庫存訊號</h3><ul><li>左手版缺貨</li><li>熱門色缺貨</li></ul></div>
+            </div>
+            <div class="slide-number">08 / 14</div>
+        </div>
+        <!-- Slide 9 -->
+        <div class="slide">
+            <span class="section-header">第三部分</span>
+            <h2>駐點人員角色重塑</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>從銷售到顧問</h3><ul><li>測量服務：手掌工具</li><li>握持教學：用力演示</li><li>保養教育</li></ul></div>
+                <div class="content-box"><h3>顧問價值</h3><ul><li>首次正確率+35%</li><li>退貨率-20%</li><li>建立忠誠度</li></ul></div>
+            </div>
+            <div class="highlight-box">培訓成本 = 3個月退貨運費節省</div>
+            <div class="slide-number">09 / 14</div>
+        </div>
+        <!-- Slide 10 -->
+        <div class="slide">
+            <span class="section-header">第四部分</span>
+            <h2>雙軌價格敏感度</h2>
+            <div class="chart-container">
+                <div class="bar-chart">
+                    <div class="bar-item"><span class="bar-label">自費用戶</span><div class="bar-track"><div class="bar-fill" style="width:90%;background:linear-gradient(90deg,#ff6b6b,#ffa657)">90%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">公費用戶</span><div class="bar-track"><div class="bar-fill" style="width:25%;background:linear-gradient(90deg,#48c774,#58a6ff)">25%</div></div></div>
+                </div>
+            </div>
+            <div class="content-grid" style="margin-top:20px">
+                <div class="content-box"><h3>公費用戶</h3><ul><li>價格不敏感</li><li>追求頂格消費</li></ul></div>
+                <div class="content-box"><h3>自費用戶</h3><ul><li>極度ROI敏感</li><li>125Hz是痛點</li></ul></div>
+            </div>
+            <div class="slide-number">10 / 14</div>
+        </div>
+        <!-- Slide 11 -->
+        <div class="slide">
+            <span class="section-header">第四部分</span>
+            <h2>K98M與情緒性人體工學</h2>
+            <div class="highlight-box" style="border-left-color:#f778ba"><strong>新消費邏輯：</strong>為心情而非治病買單</div>
+            <div class="content-grid">
+                <div class="content-box"><h3>聽覺療癒</h3><ul><li>麻將音ASMR感</li><li>打字成冥想</li><li>聲音成關鍵</li></ul></div>
+                <div class="content-box"><h3>視覺社交</h3><ul><li>高顏值展示</li><li>桌面裝飾</li><li>Instagrammable</li></ul></div>
+            </div>
+            <div class="quote-box">「不是因為手痛，是因為開心。」— 消費者</div>
+            <div class="slide-number">11 / 14</div>
+        </div>
+        <!-- Slide 12 -->
+        <div class="slide">
+            <span class="section-header">第五部分</span>
+            <h2>跨越學習懸崖</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-day">D1</div><div class="timeline-text">切換初期<br>速度暴跌</div></div>
+                <div class="timeline-item"><div class="timeline-day">D3</div><div class="timeline-text">挫折高峰<br>棄用風險</div></div>
+                <div class="timeline-item"><div class="timeline-day">D7</div><div class="timeline-text">精準度<br>恢復</div></div>
+                <div class="timeline-item"><div class="timeline-day">D14</div><div class="timeline-text">肌肉記憶<br>重建</div></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">40%</div><div class="stat-label">D3放棄率</div></div>
+                <div class="stat-card"><div class="stat-number">14天</div><div class="stat-label">平均適應</div></div>
+            </div>
+            <div class="slide-number">12 / 14</div>
+        </div>
+        <!-- Slide 13 -->
+        <div class="slide">
+            <span class="section-header">戰略建議</span>
+            <h2>產品開發建議</h2>
+            <div class="content-grid-3" style="grid-template-columns:repeat(3,1fr)">
+                <div class="content-box"><h3>短期0-6M</h3><ul><li>磁吸手托</li><li>解決衛生</li><li>壽命感知</li></ul></div>
+                <div class="content-box"><h3>中期6-12M</h3><ul><li>K860 TKL</li><li>無數字鍵</li><li>市場缺口</li></ul></div>
+                <div class="content-box"><h3>長期12M+</h3><ul><li>1000Hz+</li><li>感應器升級</li><li>回應期待</li></ul></div>
+            </div>
+            <div class="slide-number">13 / 14</div>
+        </div>
+        <!-- Slide 14 -->
+        <div class="slide conclusion">
+            <span class="section-header">結語</span>
+            <blockquote>未來的羅技人體工學，不應只是解決手痛的醫療工具，而是賦能職場健康與展現生活美學的雙重載體。</blockquote>
+            <cite>— 市場深度洞察報告</cite>
+            <div class="product-tags" style="margin-top:40px">
+                <span class="product-tag">Logitech</span>
+                <span class="product-tag">Ergonomics</span>
+                <span class="product-tag">Market Analysis</span>
+            </div>
+            <div class="slide-number">14 / 14</div>
+        </div>
+    </div>
+    <div class="nav">
+        <button onclick="prevSlide()">◀ 上一頁</button>
+        <button onclick="nextSlide()">下一頁 ▶</button>
+    </div>
+    <script>
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.slide');
+        const totalSlides = slides.length;
+        function showSlide(index) {
+            slides.forEach(s => s.classList.remove('active'));
+            slides[index].classList.add('active');
+            document.getElementById('progress').style.width = ((index + 1) / totalSlides * 100) + '%';
+        }
+        function nextSlide() { currentSlide = (currentSlide + 1) % totalSlides; showSlide(currentSlide); }
+        function prevSlide() { currentSlide = (currentSlide - 1 + totalSlides) % totalSlides; showSlide(currentSlide); }
+        document.addEventListener('keydown', (e) => { if(e.key==='ArrowRight'||e.key===' ')nextSlide(); if(e.key==='ArrowLeft')prevSlide(); });
+        showSlide(0);
+    </script>
+</body>
+</html>
