@@ -2,9 +2,60 @@
 <html lang="zh-TW">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>人體工學周邊市場深度洞察</title>
+    <meta name="description" content="Logitech 人體工學周邊市場深度洞察報告，涵蓋 Wave Keys、Lift、K860、MX Master 3S、K98M 等產品的消費者行為與零售策略分析。">
+    <meta name="theme-color" content="#0d1117">
+    <meta property="og:title" content="人體工學周邊市場深度洞察">
+    <meta property="og:description" content="跨越功能與情感的鴻溝：Logitech 產品消費者行為與零售策略分析">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap');
+        /* Print Styles */
+        @media print {
+            .nav, .progress-bar { display: none !important; }
+            .slide { 
+                position: relative !important; 
+                display: flex !important; 
+                opacity: 1 !important;
+                page-break-after: always;
+                height: auto;
+                min-height: 100vh;
+            }
+            body { background: #fff; color: #000; }
+        }
+        
+        /* Mobile/Tablet Responsive */
+        @media (max-width: 768px) {
+            .slide { padding: 20px !important; }
+            .slide h2 { font-size: 1.3em !important; }
+            .content-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .content-grid-3 { grid-template-columns: 1fr !important; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+            .stat-number { font-size: 1.6em !important; }
+            .timeline { flex-wrap: wrap; gap: 15px; }
+            .timeline::before { display: none; }
+            .timeline-item { flex: 0 0 45%; }
+            .timeline-item::after { display: none; }
+            .nav button { padding: 10px 16px; font-size: 12px; }
+            .product-tags { gap: 6px; }
+            .product-tag { padding: 6px 12px; font-size: 10px; }
+            .slide-title h1 { font-size: 2em !important; }
+            .problem-solution { grid-template-columns: 1fr !important; }
+        }
+        
+        /* Accessibility Focus Styles */
+        *:focus-visible {
+            outline: 2px solid #58a6ff;
+            outline-offset: 2px;
+        }
+        
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .slide, .progress-bar { transition: none !important; }
+        }
         *{margin:0;padding:0;box-sizing:border-box}
         body{font-family:'Noto Sans TC',sans-serif;background:#0a0a0a;color:#fff;overflow:hidden;height:100vh}
         .slide-container{width:100vw;height:100vh;position:relative}
@@ -57,6 +108,21 @@
         .nav{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:1000}
         .nav button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:11px;font-family:inherit;transition:0.3s}
         .nav button:hover{background:rgba(88,166,255,0.2)}
+        .nav button:focus-visible{background:rgba(88,166,255,0.4)}
+        
+        /* Touch swipe indicator */
+        .swipe-hint {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .swipe-hint { display: block; }
+        }
     </style>
 </head>
 <body>
@@ -280,21 +346,30 @@
         </div>
     </div>
     <div class="nav">
-        <button onclick="prevSlide()">◀ 上一頁</button>
-        <button onclick="nextSlide()">下一頁 ▶</button>
+        <button onclick="prevSlide()" aria-label="上一頁">◀ 上一頁</button>
+        <button onclick="nextSlide()" aria-label="下一頁">下一頁 ▶</button>
     </div>
+    <div class="swipe-hint" aria-hidden="true">← 左右滑動 →</div>
     <script>
         let currentSlide=0;
         const slides=document.querySelectorAll('.slide');
         const totalSlides=slides.length;
+        let touchStartX=0,touchEndX=0;
         function showSlide(index){
             slides.forEach(s=>s.classList.remove('active'));
             slides[index].classList.add('active');
+            slides[index].setAttribute('aria-current','true');
             document.getElementById('progress').style.width=((index+1)/totalSlides*100)+'%';
+            document.querySelector('.swipe-hint').style.opacity=index===0?'1':'0';
         }
         function nextSlide(){currentSlide=(currentSlide+1)%totalSlides;showSlide(currentSlide);}
         function prevSlide(){currentSlide=(currentSlide-1+totalSlides)%totalSlides;showSlide(currentSlide);}
         document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key===' ')nextSlide();if(e.key==='ArrowLeft')prevSlide();});
+        // Touch/Swipe support
+        document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
+        document.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;const diff=touchStartX-touchEndX;if(Math.abs(diff)>50){diff>0?nextSlide():prevSlide()}},{passive:true});
+        // Initial ARIA setup
+        slides[0].setAttribute('aria-current','true');
         showSlide(0);
     </script>
 </body>
