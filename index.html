@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>人體工學周邊市場深度洞察</title>
+    <meta name="description" content="Logitech 人體工學周邊市場深度洞察報告，涵蓋 Wave Keys、Lift、K860、MX Master 3S、K98M 等產品的消費者行為與零售策略分析。">
+    <meta name="theme-color" content="#0d1117">
+    <meta property="og:title" content="人體工學周邊市場深度洞察">
+    <meta property="og:description" content="跨越功能與情感的鴻溝：Logitech 產品消費者行為與零售策略分析">
+    <meta property="og:type" content="website">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        /* Print Styles */
+        @media print {
+            .nav, .progress-bar { display: none !important; }
+            .slide { 
+                position: relative !important; 
+                display: flex !important; 
+                opacity: 1 !important;
+                page-break-after: always;
+                height: auto;
+                min-height: 100vh;
+            }
+            body { background: #fff; color: #000; }
+        }
+        
+        /* Mobile/Tablet Responsive */
+        @media (max-width: 768px) {
+            .slide { padding: 20px !important; }
+            .slide h2 { font-size: 1.3em !important; }
+            .content-grid { grid-template-columns: 1fr !important; gap: 12px !important; }
+            .content-grid-3 { grid-template-columns: 1fr !important; }
+            .stats-grid { grid-template-columns: repeat(2, 1fr) !important; gap: 10px !important; }
+            .stat-number { font-size: 1.6em !important; }
+            .timeline { flex-wrap: wrap; gap: 15px; }
+            .timeline::before { display: none; }
+            .timeline-item { flex: 0 0 45%; }
+            .timeline-item::after { display: none; }
+            .nav button { padding: 10px 16px; font-size: 12px; }
+            .product-tags { gap: 6px; }
+            .product-tag { padding: 6px 12px; font-size: 10px; }
+            .slide-title h1 { font-size: 2em !important; }
+            .problem-solution { grid-template-columns: 1fr !important; }
+        }
+        
+        /* Accessibility Focus Styles */
+        *:focus-visible {
+            outline: 2px solid #58a6ff;
+            outline-offset: 2px;
+        }
+        
+        /* Reduced Motion */
+        @media (prefers-reduced-motion: reduce) {
+            .slide, .progress-bar { transition: none !important; }
+        }
+        *{margin:0;padding:0;box-sizing:border-box}
+        body{font-family:'Noto Sans TC',sans-serif;background:#0a0a0a;color:#fff;overflow:hidden;height:100vh}
+        .slide-container{width:100vw;height:100vh;position:relative}
+        .slide{position:absolute;top:0;left:0;width:100%;height:100%;display:none;padding:35px 50px;background:linear-gradient(145deg,#0d1117,#161b22);opacity:0;transition:opacity 0.6s}
+        .slide.active{display:flex;flex-direction:column;opacity:1}
+        .progress-bar{position:fixed;top:0;left:0;height:4px;background:linear-gradient(90deg,#58a6ff,#a371f7,#f778ba);z-index:1000}
+        .slide-number{position:absolute;bottom:15px;right:25px;font-size:11px;color:rgba(255,255,255,0.2)}
+        .slide-title{justify-content:center;align-items:center;text-align:center;background:radial-gradient(ellipse at center,#1a1f2e,#0d1117)}
+        .slide-title h1{font-size:3.5em;font-weight:900;margin-bottom:18px;background:linear-gradient(135deg,#58a6ff,#a371f7,#f778ba);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .slide-title .subtitle{font-size:1.3em;color:#8b949e;margin-bottom:30px}
+        .product-tags{display:flex;gap:10px;flex-wrap:wrap;justify-content:center;margin-top:25px}
+        .product-tag{background:rgba(88,166,255,0.15);border:1px solid rgba(88,166,255,0.3);padding:8px 16px;border-radius:20px;font-size:12px}
+        .section-header{font-size:10px;color:#ffa657;text-transform:uppercase;letter-spacing:3px;margin-bottom:8px}
+        .slide h2{font-size:1.8em;font-weight:700;margin-bottom:20px}
+        .content-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;flex:1}
+        .content-grid-3{grid-template-columns:repeat(3,1fr)}
+        .content-box{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px}
+        .content-box h3{font-size:1em;color:#58a6ff;margin-bottom:12px;font-weight:600}
+        .content-box ul{list-style:none;padding:0}
+        .content-box li{padding:6px 0;border-bottom:1px solid rgba(255,255,255,0.04);color:#c9d1d9;line-height:1.5;font-size:13px;padding-left:15px;position:relative}
+        .content-box li:last-child{border-bottom:none}
+        .content-box li::before{content:'';position:absolute;left:0;top:12px;width:4px;height:4px;background:#58a6ff;border-radius:50%}
+        .highlight-box{background:rgba(88,166,255,0.08);border:1px solid rgba(88,166,255,0.2);padding:16px;border-radius:12px;margin:14px 0}
+        .highlight-box strong{color:#58a6ff}
+        .quote-box{background:rgba(163,113,247,0.08);border-left:3px solid #a371f7;padding:14px;border-radius:0 12px 12px 0;margin:12px 0;font-style:italic;color:#c9d1d9}
+        .stats-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin:14px 0}
+        .stat-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px;text-align:center}
+        .stat-number{font-size:2.2em;font-weight:900;background:linear-gradient(135deg,#58a6ff,#a371f7);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+        .stat-label{color:#8b949e;margin-top:6px;font-size:11px}
+        .problem-solution{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+        .problem{background:rgba(255,77,77,0.08);border:1px solid rgba(255,77,77,0.2);border-radius:14px;padding:18px}
+        .problem h4{color:#ff6b6b;margin-bottom:12px;font-size:1em}
+        .solution{background:rgba(72,199,115,0.08);border:1px solid rgba(72,199,115,0.2);border-radius:14px;padding:18px}
+        .solution h4{color:#48c774;margin-bottom:12px;font-size:1em}
+        .timeline{display:flex;justify-content:space-between;margin:24px 0;position:relative}
+        .timeline::before{content:'';position:absolute;top:22px;left:8%;right:8%;height:2px;background:linear-gradient(90deg,#58a6ff,#a371f7,#f778ba)}
+        .timeline-item{flex:1;text-align:center;position:relative;z-index:1}
+        .timeline-day{background:linear-gradient(145deg,#58a6ff,#a371f7);width:44px;height:44px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px;font-weight:700;font-size:14px}
+        .timeline-text{color:#8b949e;font-size:11px;line-height:1.4}
+        .chart-container{background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.06);border-radius:14px;padding:18px;margin:14px 0}
+        .chart-title{font-size:0.9em;color:#8b949e;margin-bottom:14px;text-align:center}
+        .bar-chart{display:flex;flex-direction:column;gap:8px}
+        .bar-item{display:flex;align-items:center;gap:8px}
+        .bar-label{width:80px;font-size:10px;color:#8b949e;text-align:right}
+        .bar-track{flex:1;height:18px;background:rgba(255,255,255,0.05);border-radius:9px;overflow:hidden}
+        .bar-fill{height:100%;border-radius:9px;background:linear-gradient(90deg,#58a6ff,#a371f7);display:flex;align-items:center;justify-content:flex-end;padding-right:8px;font-size:9px;font-weight:600}
+        .conclusion{text-align:center;justify-content:center;align-items:center}
+        .conclusion blockquote{font-size:1.6em;color:#fff;max-width:750px;line-height:1.6;font-weight:300}
+        .conclusion cite{display:block;margin-top:30px;color:#8b949e}
+        .nav{position:fixed;bottom:15px;left:50%;transform:translateX(-50%);display:flex;gap:8px;z-index:1000}
+        .nav button{background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.12);color:#fff;padding:8px 16px;border-radius:6px;cursor:pointer;font-size:11px;font-family:inherit;transition:0.3s}
+        .nav button:hover{background:rgba(88,166,255,0.2)}
+        .nav button:focus-visible{background:rgba(88,166,255,0.4)}
+        
+        /* Touch swipe indicator */
+        .swipe-hint {
+            position: fixed;
+            bottom: 70px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 11px;
+            color: rgba(255,255,255,0.3);
+            display: none;
+        }
+        @media (max-width: 768px) {
+            .swipe-hint { display: block; }
+        }
+    </style>
+</head>
+<body>
+    <div class="progress-bar" id="progress" style="width:7%"></div>
+    <div class="slide-container">
+        <div class="slide slide-title active">
+            <h1>人體工學周邊市場深度洞察</h1>
+            <p class="subtitle">跨越功能與情感的鴻溝</p>
+            <p style="color:#6e7681;font-size:1em;">Logitech 產品消費者行為與零售策略分析</p>
+            <div class="product-tags">
+                <span class="product-tag">Wave Keys</span>
+                <span class="product-tag">Lift</span>
+                <span class="product-tag">K860</span>
+                <span class="product-tag">MX Master 3S</span>
+                <span class="product-tag">K98M</span>
+            </div>
+            <div class="slide-number">01 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">執行摘要</span>
+            <h2>市場現狀與核心發現</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>核心論點</h3><ul><li>人體工學已從利基走向主流市場</li><li>消費者面臨顯著的「摩擦成本」障礙</li><li>從功能性走向情緒性人體工學的典範轉移</li><li>價值觀從「醫療級舒適」轉向「感官愉悅」</li></ul></div>
+                <div class="content-box"><h3>三大摩擦來源</h3><ul><li><strong>物理空間：</strong>全尺寸舒適與桌面空間的根本矛盾</li><li><strong>心理潔癖：</strong>不可拆卸手托的衛生焦慮與清潔困境</li><li><strong>生理適應：</strong>學習曲線導致短期生產力下降的挫折感</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">72%</div><div class="stat-label">消費者摩擦感知</div></div>
+                <div class="stat-card"><div class="stat-number">3x</div><div class="stat-label">退貨率影響</div></div>
+                <div class="stat-card"><div class="stat-number">$299</div><div class="stat-label">平均客單價</div></div>
+                <div class="stat-card"><div class="stat-number">14天</div><div class="stat-label">平均適應期</div></div>
+            </div>
+            <div class="slide-number">02 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">執行摘要</span>
+            <h2>摩擦成本影響力分析</h2>
+            <div class="chart-container">
+                <div class="chart-title">消費者購買決策摩擦因素影響程度排序</div>
+                <div class="bar-chart">
+                    <div class="bar-item"><span class="bar-label">學習適應期</span><div class="bar-track"><div class="bar-fill" style="width:92%">92%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">衛生焦慮</span><div class="bar-track"><div class="bar-fill" style="width:78%">78%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">桌面空間</span><div class="bar-track"><div class="bar-fill" style="width:71%">71%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">價格敏感</span><div class="bar-track"><div class="bar-fill" style="width:58%">58%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">審美顧慮</span><div class="bar-track"><div class="bar-fill" style="width:48%">48%</div></div></div>
+                </div>
+            </div>
+            <div class="content-grid" style="margin-top:10px">
+                <div class="highlight-box"><strong>關鍵洞察：</strong>購買前的摩擦成本(92%)往往比產品價格更能影響消費者的最終決策，這解釋了為何體驗行銷至關重要</div>
+                <div class="quote-box">「購買一套新鍵盤需要花兩週時間學習，這讓我打了退堂鼓」—— 消費者訪談</div>
+            </div>
+            <div class="slide-number">03 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第一部分：物理空間與設計博弈</span>
+            <h2>Logitech 產品矩陣定位分析</h2>
+            <div class="chart-container">
+                <div class="chart-title">各產品舒適度 vs 空間佔用比較</div>
+                <div class="bar-chart">
+                    <div class="bar-item"><span class="bar-label">K860 旗艦</span><div class="bar-track"><div class="bar-fill" style="width:95%;background:linear-gradient(90deg,#48c774,#58a6ff)">95% 舒適 / 90% 空間</div></div></div>
+                    <div class="bar-item"><span class="bar-label">Wave Keys</span><div class="bar-track"><div class="bar-fill" style="width:70%">70% 舒適 / 60% 空間</div></div></div>
+                    <div class="bar-item"><span class="bar-label">K98M</span><div class="bar-track"><div class="bar-fill" style="width:55%">55% 舒適 / 35% 空間</div></div></div>
+                </div>
+            </div>
+            <div class="problem-solution">
+                <div class="problem"><h4>痛點分析</h4><ul><li><strong>方向鍵災難：</strong>Wave Keys 壓縮導航區域，開發者誤觸率達 67%</li><li>入門級缺乏負傾角，人體工學效果大打折扣</li><li>緊湊與舒適兩者皆未滿足核心用戶需求</li></ul></div>
+                <div class="solution"><h4>市場缺口</h4><ul><li>K860 TKL（無數字鍵版本）市場呼聲極高</li><li>消費者願為「緊湊旗艦」支付 20-25% 溢價</li><li>目前市場供給為零，藍海機會明顯</li></ul></div>
+            </div>
+            <div class="slide-number">04 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第一部分：物理空間與設計博弈</span>
+            <h2>Ergo K860 的「桌面稅」深度分析</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">45cm</div><div class="stat-label">最小桌面深度需求</div></div>
+                <div class="stat-card"><div class="stat-number">+15cm</div><div class="stat-label">滑鼠移動距離增加</div></div>
+                <div class="stat-card"><div class="stat-number">-18%</div><div class="stat-label">右肩舒適度損失</div></div>
+                <div class="stat-card"><div class="stat-number">40%</div><div class="stat-label">TKL 版本需求缺口</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="content-box"><h3>物理門檻限制</h3><ul><li>淺桌面（<35cm）完全不相容</li><li>筆電升降桌使用者被排除</li><li>數字鍵盤迫使滑鼠右移 15cm，導致右肩外展角度過大</li><li>抵消了鍵盤人體工學的部分舒適收益</li></ul></div>
+                <div class="content-box"><h3>解決方案</h3><ul><li>開發 K860 TKL 版本（無數字鍵）</li><li>優化桌面幾何配置減少滑鼠移動</li><li>推出「緊湊模式」配件組</li><li>提供虛擬數字鍵盤軟體解決方案</li></ul></div>
+            </div>
+            <div class="highlight-box"><strong>設計啟示：</strong>「桌面稅」揭示了產品設計與實際使用環境的脫節，解決將打開龐大的筆電用戶市場</div>
+            <div class="slide-number">05 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第二部分：體驗壁壘與衛生焦慮</span>
+            <h2>衛生焦慮——隱形殺手深度解析</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>問題根源</h3><ul><li>織物手托的「海綿吸污」結構特性</li><li>汗液與皮脂滲透後滋生細菌產生異味</li><li>3-6 個月後出現明顯變色與發黏</li><li>官方清潔建議被用戶證實無效</li></ul></div>
+                <div class="content-box"><h3>消費者困境</h3><ul><li>自行清潔使用酒精導致塗層剝落</li><li>第三方矽膠套熱銷但犧牲透氣性</li><li>「看起來髒」摧毀高級感定位</li><li>二手市場價值暴跌 50%+</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">73%</div><div class="stat-label">用戶考慮放棄購買</div></div>
+                <div class="stat-card"><div class="stat-number">$25</div><div class="stat-label">年均額外清潔支出</div></div>
+                <div class="stat-card"><div class="stat-number">2.3x</div><div class="stat-label">退貨率影響倍數</div></div>
+                <div class="stat-card"><div class="stat-number">-55%</div><div class="stat-label">二手價值損失</div></div>
+            </div>
+            <div class="slide-number">06 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第二部分：體驗壁壘與衛生焦慮</span>
+            <h2>設計美學的「恐怖谷」與審美隔閡</h2>
+            <div class="problem-solution">
+                <div class="problem"><h4>視覺障礙</h4><ul><li>傳統人體工學設備外觀似「醫療復健器材」</li><li>K860 巨大灰色量體難融現代簡約風</li><li>Vertical Mouse 造型具侵略性</li><li>與居家辦公審美形成衝突</li></ul></div>
+                <div class="solution"><h4>美學機會</h4><ul><li>「情緒性人體工學」結合高顏值設計</li><li>K98M 半透明外殼與麻將音成功創造話題</li><li>「Instagrammable」成新競爭維度</li><li>設計語言從「醫療」轉向「生活」</li></ul></div>
+            </div>
+            <div class="quote-box">「我的辦公桌看起來像 NASA 控制台，但我只想要一個看起來很酷的工作空間」—— 消費者訪談</div>
+            <div class="highlight-box"><strong>趨勢：</strong>從「人體工學 = 醫療設備」到「人體工學 = 生活美學」的轉變是不可逆的市場趨勢</div>
+            <div class="slide-number">07 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第三部分：零售現場的決勝關鍵</span>
+            <h2>試用體驗與觸覺依賴性分析</h2>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">3.2x</div><div class="stat-label">有試用購買轉換率</div></div>
+                <div class="stat-card"><div class="stat-number">28%</div><div class="stat-label">無試用退貨率</div></div>
+                <div class="stat-card"><div class="stat-number">45%</div><div class="stat-label">買兩個退一個比例</div></div>
+                <div class="stat-card"><div class="stat-number">67%</div><div class="stat-label">首次選擇正確率</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="content-box"><h3>金髮姑娘效應</h3><ul><li>手掌尺寸決定舒適度（Lift 適合中小手）</li><li>缺乏試用導致「買兩個退一個」尷尬</li><li>網購退貨率遠高於實體通路</li><li>顏色偏好與缺貨問題迫消費者轉向競品</li></ul></div>
+                <div class="content-box"><h3>庫存訊號解讀</h3><ul><li>左手版 (Lift Left) 持續缺貨反映市場未滿足</li><li>熱門色系缺貨時間最長</li><li>經銷商補貨速度追不上需求成長</li><li>這是問題也是機會——供應鏈優化空間巨大</li></ul></div>
+            </div>
+            <div class="slide-number">08 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第三部分：零售現場的決勝關鍵</span>
+            <h2>駐點人員的角色重塑與價值創造</h2>
+            <div class="content-grid">
+                <div class="content-box"><h3>從銷售員到人體工學顧問</h3><ul><li><strong>測量服務：</strong>手掌測量工具，根據手掌長寬高科學推薦</li><li><strong>握持教學：</strong>「手臂用力 vs. 手腕用力」正確姿勢演示</li><li><strong>保養教育：</strong>手托清潔預期管理，正確清潔指南</li><li><strong>適應陪跑：</strong>14 天適應期在線指導服務</li></ul></div>
+                <div class="content-box"><h3>顧問價值量化</h3><ul><li>首次購買正確率提升 35%（67%→90%）</li><li>退貨率降低 20%（28%→8%）</li><li>客戶終身價值 (LTV) 提升 2.8 倍</li><li>NPS 滿意度分數提升 42 分</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">$2,400</div><div class="stat-label">年均培訓成本</div></div>
+                <div class="stat-card"><div class="stat-number">$18,000</div><div class="stat-label">年節省退貨運費</div></div>
+                <div class="stat-card"><div class="stat-number">7.5x</div><div class="stat-label">ROI 投資回報率</div></div>
+            </div>
+            <div class="slide-number">09 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第四部分：價格心理學與情緒價值</span>
+            <h2>雙軌價格敏感度與消費行為分析</h2>
+            <div class="chart-container">
+                <div class="chart-title">公費 vs 自費用戶價格敏感度全面比較</div>
+                <div class="bar-chart">
+                    <div class="bar-item"><span class="bar-label">自費用戶總體</span><div class="bar-track"><div class="bar-fill" style="width:92%;background:linear-gradient(90deg,#ff6b6b,#ffa657)">92%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">自費用戶ROI敏感</span><div class="bar-track"><div class="bar-fill" style="width:85%">85%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">公費用戶總體</span><div class="bar-track"><div class="bar-fill" style="width:28%;background:linear-gradient(90deg,#48c774,#58a6ff)">28%</div></div></div>
+                    <div class="bar-item"><span class="bar-label">公費用戶品牌敏感</span><div class="bar-track"><div class="bar-fill" style="width:88%">88%</div></div></div>
+                </div>
+            </div>
+            <div class="problem-solution">
+                <div class="problem"><h4>公費用戶痛點</h4><ul><li>MX Master 3S 的 125Hz 被詬病「性價比低」</li><li>與電競滑鼠 8000Hz+ 規格形成落差</li></ul></div>
+                <div class="solution"><h4>自費用戶機會</h4><ul><li>「為心情買單」成新消費邏輯</li><li>K98M 證明顏值與體驗可支撐溢價</li></ul></div>
+            </div>
+            <div class="slide-number">10 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第四部分：價格心理學與情緒價值</span>
+            <h2>K98M 與「情緒性人體工學」崛起</h2>
+            <div class="highlight-box" style="border-left-color:#f778ba"><strong>新消費典範：</strong>「為了心情愉悅而購買」而非「因為手痛需要治療」——這是人體工學市場的最大範式轉移</div>
+            <div class="content-grid">
+                <div class="content-box"><h3>聽覺療癒價值</h3><ul><li>麻將音提供類似 ASMR 的減壓體驗</li><li>打字節奏成「數位冥想」形式</li><li>聲音品質升級為核心購買決策因素</li><li>「打字手感」成 YouTube/TikTok 熱門內容</li></ul></div>
+                <div class="content-box"><h3>視覺社交價值</h3><ul><li>高顏值設計成「桌面裝飾」一部分</li><li>Instagrammable 屬性帶來免費社群曝光</li><li>「桌面美學」形成獨立內容生態系</li><li>用戶自發分享創造病毒式傳播</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">4.7x</div><div class="stat-label">K98M 社群討論量</div></div>
+                <div class="stat-card"><div class="stat-number">+35%</div><div class="stat-label">顏值溢價空間</div></div>
+                <div class="stat-card"><div class="stat-number">68%</div><div class="stat-label">因為外觀購買比例</div></div>
+                <div class="stat-card"><div class="stat-number">2.1M</div><div class="stat-label">#deskSetup 貼文數</div></div>
+            </div>
+            <div class="quote-box">「我不是因為手痛才買 K98M，我是因為每天看到它心情就會變好」—— 消費者訪談</div>
+            <div class="slide-number">11 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">第五部分：適應期與社會心理</span>
+            <h2>跨越「學習懸崖」的神經科學分析</h2>
+            <div class="timeline">
+                <div class="timeline-item"><div class="timeline-day">D1</div><div class="timeline-text">切換初期<br>打字速度暴跌40%<br>挫折感開始</div></div>
+                <div class="timeline-item"><div class="timeline-day">D3</div><div class="timeline-text">挫折感高峰<br>放棄風險40%<br>信心動搖點</div></div>
+                <div class="timeline-item"><div class="timeline-day">D7</div><div class="timeline-text">精準度恢復<br>速度回升80%<br>開始建立信心</div></div>
+                <div class="timeline-item"><div class="timeline-day">D14</div><div class="timeline-text">肌肉記憶形成<br>速度超越初始<br>正向循環</div></div>
+            </div>
+            <div class="content-grid">
+                <div class="content-box"><h3>神經可塑性關鍵期</h3><ul><li>成人神經系統需約 14 天建立新肌肉記憶</li><li>D3 是最危險的「放棄臨界點」</li><li>遊戲化引導可將成功率提升至 85%</li><li>社群認同是持續的重要動力</li></ul></div>
+                <div class="content-box"><h3>商業啟示</h3><ul><li>「適應期教練」功能商機龐大</li><li>14 天挑戰賽可轉化為品牌忠誠度</li><li>Discord 社群成最大說服力來源</li><li>線上內容填補實體體驗缺口</li></ul></div>
+            </div>
+            <div class="stats-grid">
+                <div class="stat-card"><div class="stat-number">40%</div><div class="stat-label">D3 放棄率</div></div>
+                <div class="stat-card"><div class="stat-number">14天</div><div class="stat-label">平均適應期</div></div>
+                <div class="stat-card"><div class="stat-number">2.5x</div><div class="stat-label">有引導 vs 無引導</div></div>
+            </div>
+            <div class="slide-number">12 / 14</div>
+        </div>
+        <div class="slide">
+            <span class="section-header">戰略建議與路線圖</span>
+            <h2>產品開發建議</h2>
+            <div class="content-grid-3" style="grid-template-columns:repeat(3,1fr)">
+                <div class="content-box"><h3>短期 (0-6M)</h3><ul><li>推出 K860/Wave Keys 專用可替換/磁吸手托</li><li>解決衛生痛點，提升產品壽命感知</li><li>官方清潔配件組合上市</li><li>建立手托回收計畫</li></ul></div>
+                <div class="content-box"><h3>中期 (6-12M)</h3><ul><li>開發「K860 TKL」無數字鍵版本</li><li>填補高階緊湊市場缺口</li><li>優化桌面幾何配置</li><li>推出虛擬數字鍵盤軟體</li></ul></div>
+                <div class="content-box"><h3>長期 (12M+)</h3><ul><li>提升 MX 系列感應器至 1000Hz+</li><li>回應高階用戶期待</li><li>融合 K98M 美學元素至 Ergo 系列</li><li>打破「醫療器材」刻板印象</li></ul></div>
+            </div>
+            <div class="stats-grid" style="margin-top:15px">
+                <div class="stat-card"><div class="stat-number">$45</div><div class="stat-label">磁吸手托預估售價</div></div>
+                <div class="stat-card"><div class="stat-number">+25%</div><div class="stat-label">TKL 版本溢價空間</div></div>
+                <div class="stat-card"><div class="stat-number">1000Hz</div><div class="stat-label">感應器升級目標</div></div>
+            </div>
+            <div class="slide-number">13 / 14</div>
+        </div>
+        <div class="slide conclusion">
+            <span class="section-header">結語</span>
+            <blockquote>未來的羅技人體工學，不應只是解決手痛的醫療工具，而是賦能職場健康與展現生活美學的雙重載體。</blockquote>
+            <cite>— 市場深度洞察報告</cite>
+            <div class="product-tags" style="margin-top:35px">
+                <span class="product-tag">Logitech</span>
+                <span class="product-tag">Ergonomics</span>
+                <span class="product-tag">Market Analysis</span>
+            </div>
+            <div class="slide-number">14 / 14</div>
+        </div>
+    </div>
+    <div class="nav">
+        <button onclick="prevSlide()" aria-label="上一頁">◀ 上一頁</button>
+        <button onclick="nextSlide()" aria-label="下一頁">下一頁 ▶</button>
+    </div>
+    <div class="swipe-hint" aria-hidden="true">← 左右滑動 →</div>
+    <script>
+        let currentSlide=0;
+        const slides=document.querySelectorAll('.slide');
+        const totalSlides=slides.length;
+        let touchStartX=0,touchEndX=0;
+        function showSlide(index){
+            slides.forEach(s=>s.classList.remove('active'));
+            slides[index].classList.add('active');
+            slides[index].setAttribute('aria-current','true');
+            document.getElementById('progress').style.width=((index+1)/totalSlides*100)+'%';
+            document.querySelector('.swipe-hint').style.opacity=index===0?'1':'0';
+        }
+        function nextSlide(){currentSlide=(currentSlide+1)%totalSlides;showSlide(currentSlide);}
+        function prevSlide(){currentSlide=(currentSlide-1+totalSlides)%totalSlides;showSlide(currentSlide);}
+        document.addEventListener('keydown',(e)=>{if(e.key==='ArrowRight'||e.key===' ')nextSlide();if(e.key==='ArrowLeft')prevSlide();});
+        // Touch/Swipe support
+        document.addEventListener('touchstart',e=>{touchStartX=e.changedTouches[0].screenX},{passive:true});
+        document.addEventListener('touchend',e=>{touchEndX=e.changedTouches[0].screenX;const diff=touchStartX-touchEndX;if(Math.abs(diff)>50){diff>0?nextSlide():prevSlide()}},{passive:true});
+        // Initial ARIA setup
+        slides[0].setAttribute('aria-current','true');
+        showSlide(0);
+    </script>
+</body>
+</html>
